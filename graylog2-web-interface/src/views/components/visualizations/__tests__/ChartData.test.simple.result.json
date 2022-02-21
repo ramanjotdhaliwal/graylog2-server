@@ -7,7 +7,8 @@
     ],
     "y": [
       2696
-    ]
+    ],
+    "yhoverformat": "r"
   },
   {
     "type": "scatter",
@@ -17,7 +18,8 @@
     ],
     "y": [
       239622
-    ]
+    ],
+    "yhoverformat": "r"
   },
   {
     "type": "scatter",
@@ -27,7 +29,8 @@
     ],
     "y": [
       118
-    ]
+    ],
+    "yhoverformat": "r"
   },
   {
     "type": "scatter",
@@ -37,7 +40,8 @@
     ],
     "y": [
       6580
-    ]
+    ],
+    "yhoverformat": "r"
   },
   {
     "type": "scatter",
@@ -47,7 +51,8 @@
     ],
     "y": [
       3680
-    ]
+    ],
+    "yhoverformat": "r"
   },
   {
     "type": "scatter",
@@ -57,6 +62,7 @@
     ],
     "y": [
       327284
-    ]
+    ],
+    "yhoverformat": "r"
   }
 ]

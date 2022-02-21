@@ -119,6 +119,7 @@ describe('XYPlot', () => {
       yaxis: { fixedrange: true, rangemode: 'tozero', tickformat: ',g' },
       xaxis: { fixedrange: true },
       showlegend: false,
+      hovermode: 'x',
     });
 
     expect(genericPlot).toHaveProp('chartData', chartData);
@@ -155,7 +156,9 @@ describe('XYPlot', () => {
     const allMessages: RelativeTimeRange = { type: 'relative', range: 0 };
     const currentQueryForAllMessages = currentQuery.toBuilder().timerange(allMessages).build();
     const user = currentUser.toBuilder().timezone('UTC').build();
-    const wrapper = mount(<SimpleXYPlot effectiveTimerange={timerange} currentQuery={currentQueryForAllMessages} currentUser={user} />);
+    const wrapper = mount(<SimpleXYPlot effectiveTimerange={timerange}
+                                        currentQuery={currentQueryForAllMessages}
+                                        currentUser={user} />);
     const genericPlot = wrapper.find('GenericPlot');
 
     expect(genericPlot).toHaveProp('layout', expect.objectContaining({

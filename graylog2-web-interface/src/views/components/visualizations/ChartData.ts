@@ -30,6 +30,7 @@ export type ChartDefinition = {
   fill?: string,
   line?: { shape: string },
   hovertemplate?: string,
+  yhoverformat?: string,
   mode?: string,
   opacity?: number,
   text?: string[],
@@ -46,7 +47,7 @@ export type ChartDefinition = {
 
 export type ChartData = [any, Array<Key>, Array<any>, Array<Array<any>>];
 export type ExtractedSeries = Array<ChartData>;
-export type ValuesBySeries = { [key: string]: Array<number>};
+export type ValuesBySeries = { [key: string]: Array<number> };
 
 export type KeyJoiner = (keys: Array<any>) => string;
 
@@ -54,13 +55,22 @@ export type Generator = (type: string, name: string, labels: Array<string>, valu
 
 const _defaultKeyJoiner = (keys) => keys.join('-');
 
-const _defaultChartGenerator = (type, name, labels, values): ChartDefinition => ({ type, name, x: labels, y: values });
+const _defaultChartGenerator = (type, name, labels, values): ChartDefinition => ({
+  type,
+  name,
+  x: labels,
+  y: values,
+  yhoverformat: 'r',
+});
 
 export const flattenLeafs = (leafs: Array<Leaf>, matcher: (value: Value) => boolean = ({ source }) => source.endsWith('leaf')): Array<any> => {
   return flatten(leafs.map((l) => l.values.filter((value) => matcher(value)).map((v) => [l.key, v])));
 };
 
-export const formatSeries = ({ valuesBySeries = {}, xLabels = [] }: {valuesBySeries: ValuesBySeries, xLabels: Array<any>}): ExtractedSeries => {
+export const formatSeries = ({
+  valuesBySeries = {},
+  xLabels = [],
+}: { valuesBySeries: ValuesBySeries, xLabels: Array<any> }): ExtractedSeries => {
   return Object.keys(valuesBySeries).map((value) => [
     value,
     xLabels,

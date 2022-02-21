@@ -17,7 +17,8 @@
       4954,
       4986,
       4071
-    ]
+    ],
+    "yhoverformat": "r"
   },
   {
     "name": "index-UsersController-count()",
@@ -37,7 +38,8 @@
       354,
       342,
       293
-    ]
+    ],
+    "yhoverformat": "r"
   },
   {
     "name": "show-PostsController-count()",
@@ -57,7 +59,8 @@
       1580,
       1708,
       1295
-    ]
+    ],
+    "yhoverformat": "r"
   },
   {
     "name": "login-LoginController-count()",
@@ -77,7 +80,8 @@
       1480,
       1354,
       1095
-    ]
+    ],
+    "yhoverformat": "r"
   },
   {
     "name": "edit-PostsController-count()",
@@ -97,7 +101,8 @@
       246,
       222,
       234
-    ]
+    ],
+    "yhoverformat": "r"
   },
   {
     "name": "count()",
@@ -117,6 +122,7 @@
       8617,
       8614,
       6993
-    ]
+    ],
+    "yhoverformat": "r"
   }
 ]

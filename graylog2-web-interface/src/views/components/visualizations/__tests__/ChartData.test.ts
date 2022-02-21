@@ -47,6 +47,7 @@ describe('Chart helper functions', () => {
         type: 'dummy',
         x: ['index', 'show', 'login', 'edit'],
         y: [27142, 7826, 6626, 1246],
+        yhoverformat: 'r',
       }];
 
       expect(result).toHaveLength(1);
@@ -61,6 +62,7 @@ describe('Chart helper functions', () => {
         type: 'bar',
         x: ['index', 'show', 'login', 'edit'],
         y: [27142, 7826, 6626, 1246],
+        yhoverformat: 'r',
       }];
 
       expect(result).toHaveLength(1);
@@ -81,6 +83,7 @@ describe('Chart helper functions', () => {
           '2018-05-28T11:53:00.000Z',
         ],
         y: [7813, 8657, 8645, 8630, 702],
+        yhoverformat: 'r',
       }, {
         name: 'sum(took_ms)',
         type: 'bar',
@@ -92,6 +95,7 @@ describe('Chart helper functions', () => {
           '2018-05-28T11:53:00.000Z',
         ],
         y: [587008, 646728, 792102, 579708, 62596],
+        yhoverformat: 'r',
       }];
 
       expect(result).toHaveLength(2);
@@ -112,6 +116,7 @@ describe('Chart helper functions', () => {
           '2018-05-28T11:53:00.000Z',
         ],
         y: [7813, 0, 0, 0, 702],
+        yhoverformat: 'r',
       }];
 
       expect(result).toHaveLength(1);
@@ -129,6 +134,7 @@ describe('Chart helper functions', () => {
           '2018-05-28T11:53:00.000Z',
         ],
         y: [7813, 702],
+        yhoverformat: 'r',
       }];
 
       expect(result).toHaveLength(1);
@@ -157,7 +163,10 @@ describe('Chart helper functions', () => {
       const input = readFixture('ChartData.test.oneColumOneRowPivot.json');
       const generatorFunction = (type, name, x, y, z) => ({ type, name, x, y, z });
 
-      const formatSeriesCustom = ({ valuesBySeries, xLabels }: { valuesBySeries: ValuesBySeries, xLabels: Array<any> }): ExtractedSeries => {
+      const formatSeriesCustom = ({
+        valuesBySeries,
+        xLabels,
+      }: { valuesBySeries: ValuesBySeries, xLabels: Array<any> }): ExtractedSeries => {
         // In this example we want to create only one series, with an z value, which contains all series data
         const z: Array<any> = Object.values(valuesBySeries).map((series) => {
           const newSeries = fill(Array(xLabels.length), null);
@@ -195,7 +204,10 @@ describe('Chart helper functions', () => {
   describe('generateChart', () => {
     it('should allow passing a generator function modelling the chart config', () => {
       const input = readFixture('ChartData.test.simple.json');
-      const generatorFunction = (type, name, labels, values) => ({ type: 'md5', name: md5(JSON.stringify({ type, name, labels, values })) });
+      const generatorFunction = (type, name, labels, values) => ({
+        type: 'md5',
+        name: md5(JSON.stringify({ type, name, labels, values })),
+      });
       const pipeline = flow([
         transformKeys(config.rowPivots, config.columnPivots),
         extractSeries(),
